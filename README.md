@@ -1,6 +1,12 @@
 __Sash is a Secure Shell wrapper which uses `aws-cli` to find an instance's IP and PEM file by its name__
-sash
-====
+sash for VPN connections
+========================
+Since we typically work with AWS through VPNs, and since
+we block the public ssh ports for security, the default sash
+fails for us, trying to connect to the public IP address first.
+
+This one is a quick hack to force sash to ONLY use the private
+IP addresses.
 
 Prerequisites
 -------------

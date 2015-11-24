@@ -1,6 +1,6 @@
 # USAGE:
 # sash machine-name - connects via SSH to a machine in your Amazon account with this machine name
-#
+# Hacked to only use private IPs
 
 function private_dns_to_name {
   local dns=$1
@@ -56,7 +56,7 @@ function sash {
   eval $(_get_data private_ips 5 ${instances_data[@]})
 
   for i in ${!ips[@]}; do
-    ips[i]=${ips[i]//None/${private_ips[i]}}
+    ips[i]=${private_ips[i]}
   done
 
   local number_of_instances=$((${#ips[@]}))
